@@ -1,7 +1,12 @@
+import MapSection from '@/components/MapSection';
 import React from 'react';
 
 const page = () => {
-  return <div className="text-3xl">page</div>;
+  return (
+    <main className="w-full h-screen">
+      <MapSection />
+    </main>
+  );
 };
 
 export default page;

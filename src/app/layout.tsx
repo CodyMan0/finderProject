@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import Link from 'next/link';
 import './global.css';
 
 export default function RootLayout({
@@ -10,7 +11,14 @@ export default function RootLayout({
     <html lang="ko">
       <head />
       <body>
-        <Header />
+        <Header
+          rightElements={[
+            <button key="button">복사</button>,
+            <Link href="/feedback" key="feedback">
+              링크
+            </Link>,
+          ]}
+        />
         {children}
       </body>
     </html>
