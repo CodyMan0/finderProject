@@ -1,7 +1,18 @@
+'use client';
+
 import React from 'react';
+import Map from './Map';
 
 const MapSection = () => {
-  return <div>MapSection</div>;
+  /** onLoadMap */
+
+  return (
+    <Map
+      onLoad={() => {
+        console.log('did');
+      }}
+    />
+  );
 };
 
 export default MapSection;
