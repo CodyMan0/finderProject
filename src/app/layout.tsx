@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head />
-      <body>
+      <body className="w-full h-full">
         <Header
           rightElements={[
             <button key="button">복사</button>,
