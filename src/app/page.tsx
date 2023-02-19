@@ -4,6 +4,7 @@ import { use, useEffect } from 'react';
 import MapSection from '@/components/MapSection';
 import React from 'react';
 import UseStores from 'hooks/UseStores';
+import { SWRConfig } from 'swr';
 
 const page = () => {
   const stores = use(getData());

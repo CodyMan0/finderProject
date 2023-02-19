@@ -6,11 +6,11 @@ import React, { useEffect } from 'react';
 import { NaverMap } from 'types/map';
 import { Store } from 'types/store';
 import Map from './Map';
-import Marker from './Marker';
+import Markers from './Markers';
 
-type Props = {
+interface Props {
   stores: Store[];
-};
+}
 
 const MapSection = ({ stores }: Props) => {
   const { initializeStores } = UseStores();
@@ -26,7 +26,7 @@ const MapSection = ({ stores }: Props) => {
   return (
     <>
       <Map onLoad={onLoadMap} />
-      <Marker />
+      <Markers />
     </>
   );
 };
