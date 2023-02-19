@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from 'react';
 import { NaverMap } from 'types/map';
 import { Coordinates } from 'types/store';
 
-type props = {
+type Props = {
   mapId?: string;
   initialCenter?: Coordinates;
   initialZoom?: number;
@@ -18,9 +18,8 @@ const Map = ({
   initialCenter = INITIAL_CENTER,
   initialZoom = INITIAL_ZOOM,
   onLoad,
-}: props) => {
+}: Props) => {
   const mapRef = useRef<NaverMap | null>(null);
-
   const initializeMap = () => {
     const mapOptions = {
       center: new window.naver.maps.LatLng(...initialCenter),
@@ -28,9 +27,13 @@ const Map = ({
       minZoom: 9,
       scaleControl: false,
       mapDataControl: false,
+      logoControlOptions: {
+        position: window.naver.maps.Position.BOTTOM_LEFT,
+      },
     };
 
-    const map = new window.naver.maps.Map(mapId, mapOptions);
+    /** https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html */
+    const map = new naver.maps.Map(mapId, mapOptions);
     mapRef.current = map;
 
     if (onLoad) {
@@ -45,14 +48,15 @@ const Map = ({
   }, []);
 
   return (
-    <div>
+    <>
       <Script
         strategy="afterInteractive"
         type="text/javascript"
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NCP_CLIENT_ID}`}
-        onLoad={initializeMap}
+        onReady={initializeMap}
       />
-    </div>
+      <div id={mapId} style={{ width: '100%', height: '100vh' }} />
+    </>
   );
 };
 
